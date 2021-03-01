@@ -9,25 +9,25 @@
 
 ` $ curl localhost:8080/atleta/listar-todos `
 
-  ![listar](img/Captura de tela de 2021-02-28 20-28-04.png)
+  ![listar](./img/listar.png)
   
   
 * Busca o atleta
 
 ` $ curl localhost:8080/atleta/busca-atleta/{atleta} `
 
-  ![buscar](img/Captura de tela de 2021-02-28 20-38-21.png)
+  ![buscar](./img/busca.png)
   
   
 * Adiciona atleta
 
 ` $ curl localhost:8080/atleta/adiciona/{atleta}/{nome}/{treino}/{dieta}/{treinador}/{pontos} `
 
-  ![adiciona](img/Captura de tela de 2021-02-28 20-40-51.png)
+  ![adiciona](./img/adiciona.png)
   
 
 * Deleta atleta
 
 ` $ curl localhost:8080/atleta/deleta/{atleta} `
 
-  ![deleta](img/Captura de tela de 2021-02-28 20-44-46.png)
+  ![deleta](./img/deleta.png)
