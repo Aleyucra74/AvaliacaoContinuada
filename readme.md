@@ -9,25 +9,25 @@
 
 ` $ curl localhost:8080/atleta/listar-todos `
 
-  ![listar](./img/listar.png)
+  ![listar](./img/listar.jpg)
   
   
 * Busca o atleta
 
 ` $ curl localhost:8080/atleta/busca-atleta/{atleta} `
 
-  ![buscar](./img/busca.png)
+  ![buscar](./img/busca.jpg)
   
   
 * Adiciona atleta
 
 ` $ curl localhost:8080/atleta/adiciona/{atleta}/{nome}/{treino}/{dieta}/{treinador}/{pontos} `
 
-  ![adiciona](./img/adiciona.png)
+  ![adiciona](./img/adiciona.jpg)
   
 
 * Deleta atleta
 
 ` $ curl localhost:8080/atleta/deleta/{atleta} `
 
-  ![deleta](./img/deleta.png)
+  ![deleta](./img/deleta.jpg)
