@@ -2,6 +2,8 @@
 
  > Nessa avaliacao foram necessarios implementar as classes abstratas e interface para seguir as regras dada pelo enumciado do exercicio, onde os metodos implementado dentro da classe interface são abstratas por si só, não necesariamente usar 'abstract' no metodo.
 
+## Diagrama
+![diagrama](./img/diagrama.jpg)
 
 ## Rotas
 
