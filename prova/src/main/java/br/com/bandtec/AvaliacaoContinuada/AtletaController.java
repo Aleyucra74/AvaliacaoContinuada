@@ -7,83 +7,74 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/atleta")
+@RequestMapping("/atletas")
 public class AtletaController {
 
     private List<Atleta> atletas = new ArrayList<Atleta>();
 
-    public AtletaController() {
-        this.atletas.add(new Futebol(
-                "paulinho",
-                2,
-                "cardio",
-                "seu paulo",
-                5));
-        this.atletas.add(new Corredor(
-                "marquinhos",
-                5,
-                "folga",
-                "carlao",
-                10));
-        this.atletas.add(new Nadador(
-                "felps",
-                3,
-                "carioca",
-                "juliao",
-                20));
+    Boolean isCreatead = false;
+// caso a lista nao esteja iniciada o metodo nao faz nada, se nao ele inicia a lista com um valor
+
+    public void getIsCreatead() {
+        if (!isCreatead) {
+            isCreatead=true;
+            atletas.add(new Futebol(
+                    "paulinho",
+                    2,
+                    "cardio",
+                    "seu paulo",
+                    5));
+        }
     }
 
-    @GetMapping("/listar-todos")
-    public List<Atleta> listar(){
-        return  this.atletas;
+    @GetMapping("/")
+    public List<Atleta> getListar(){
+        getIsCreatead();
+        return this.atletas;
     }
 
-    @GetMapping("/busca-atleta/{atleta}")
-    public List<Atleta> buscar(@PathVariable String atleta){
+    @GetMapping("/{atleta}")
+    public List<Atleta> getBuscar(@PathVariable String atleta){
+        getIsCreatead();
         return atletas.stream().filter(a -> a.getNomeAtleta().equals(atleta)).collect(Collectors.toList());
     }
 
-    @GetMapping("/adiciona/{atleta}/{nome}/{treino}/{dieta}/{treinador}/{pontos}")
-    public String adiciona(@PathVariable String atleta,
-                           @PathVariable String nome,
-                           @PathVariable Integer treino,
-                           @PathVariable String dieta,
-                           @PathVariable String treinador,
-                           @PathVariable Integer pontos
-                           ){
+    //futebol
+    @PostMapping("/jogador")
+    public String postFutebol(@RequestBody Futebol atleta){
+        getIsCreatead();
         try {
-            switch (atleta){
-                case "futebol" :
-                    this.atletas.add(new Futebol(
-                            nome,
-                            treino,
-                            dieta,
-                            treinador,
-                            pontos));
-                case "nadador" :
-                    this.atletas.add(new Nadador(
-                            nome,
-                            treino,
-                            dieta,
-                            treinador,
-                            pontos));
-                case "corredor" :
-                    this.atletas.add(new Corredor(
-                            nome,
-                            treino,
-                            dieta,
-                            treinador,
-                            pontos));
-            }
-
+            atletas.add(atleta);
         }catch (Exception e){
             return e.getMessage();
         }
         return "adicionado com sucesso";
     }
 
-    @DeleteMapping("/deleta/{atleta}")
-    public String deleta(@PathVariable Integer atleta){
+    @PostMapping("/nadador")
+    public String postNadador(@RequestBody Nadador atleta){
+        getIsCreatead();
+        try {
+            atletas.add(atleta);
+        }catch (Exception e){
+            return e.getMessage();
+        }
+        return "adicionado com sucesso";
+    }
+
+    @PostMapping("/corredor")
+    public String postCorredor(@RequestBody Corredor atleta){
+        getIsCreatead();
+        try {
+            atletas.add(atleta);
+        }catch (Exception e){
+            return e.getMessage();
+        }
+        return "adicionado com sucesso";
+    }
+
+    @DeleteMapping("/{atleta}")
+    public String getDelete(@PathVariable int atleta){
         if (atleta < atletas.size()) {
             atletas.remove(atleta);
             return "atleta deletado com sucesso";
